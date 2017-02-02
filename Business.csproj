@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8FF4BE10-691E-464C-BE6C-04AE951D450D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Business</RootNamespace>
+    <AssemblyName>Business</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CryptoType.cs" />
+    <Compile Include="IEncryptAndDecrypt.cs" />
+    <Compile Include="LoginInformation.cs">
+      <DependentUpon>dbPasswordManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="objAccountHolder.cs" />
+    <Compile Include="AccountLoginData.cs">
+      <DependentUpon>dbPasswordManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbPasswordManagement.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbPasswordManagement.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbPasswordManagement.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbPasswordManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbPasswordManagement.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbPasswordManagement.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="objAccount.cs" />
+    <Compile Include="objLogin.cs" />
+    <Compile Include="objPerson.cs" />
+    <Compile Include="Person.cs">
+      <DependentUpon>dbPasswordManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShowAllData_Result.cs">
+      <DependentUpon>dbPasswordManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShowAllRecordsByAccountName_Result.cs">
+      <DependentUpon>dbPasswordManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShowAllRecordsByPassword_Result.cs">
+      <DependentUpon>dbPasswordManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShowAllRecordsByUserName_Result.cs">
+      <DependentUpon>dbPasswordManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShowAllRecords_Result.cs">
+      <DependentUpon>dbPasswordManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>dbPasswordManagement.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="dbPasswordManagement.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>dbPasswordManagement.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="dbPasswordManagement.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>dbPasswordManagement.edmx</DependentUpon>
+      <LastGenOutput>dbPasswordManagement.Context.cs</LastGenOutput>
+    </None>
+    <None Include="dbPasswordManagement.edmx.diagram">
+      <DependentUpon>dbPasswordManagement.edmx</DependentUpon>
+    </None>
+    <None Include="dbPasswordManagement.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>dbPasswordManagement.edmx</DependentUpon>
+      <LastGenOutput>dbPasswordManagement.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{5d32a7f8-a4c3-42c0-a4c6-2bb462332652}</Project>
+      <Name>Helpers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
